@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import AboutArticles from "../details/interfaces"
 
 const AllArticles = () =>{
-const URL = 'https://api.spaceflightnewsapi.net/v4/articles'
+const URL = 'https://api.spaceflightnewsapi.net/v4/articles/?offset=20'
 
 //lo stato dei artiicoli
 const [singleArticle, setSingleArticle] = useState<AboutArticles[]>([]) //il tipo dell'array(utilizzo l'interface)

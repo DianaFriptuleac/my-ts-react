@@ -4,7 +4,10 @@ import { Container,Row, Col, Card } from "react-bootstrap";
 import AboutArticles from "../details/interfaces";
 
 const ArticleDetail = () => {
+    //useParams per ottenere il parammetro id e gli do il tipo di string
   const { id } = useParams<{ id: string }>();
+  //lo stato inizialmente e null prima che l'articolo venga carricato
+  // AboutArticles | null - l' article puo essere di tipo AboutArticles(interfaccia) o null.
   const [article, setArticle] = useState<AboutArticles | null>(null);
 
   useEffect(() => {

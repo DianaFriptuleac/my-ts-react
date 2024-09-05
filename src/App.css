@@ -37,9 +37,21 @@
   }
 }
 .my-card{
-  background-color: rgb(227, 227, 229);
+  background-color: rgb(3, 3, 30);
 
 }
 .myfooter{
   background-color: gray;
+}
+body{
+  background-image: url('https://giovanimprenditori.org/wp-content/uploads/2022/07/QI_SPACE-scaled.jpg');
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh ;
+ 
+}
+#root main {
+  flex-grow: 1;
 }

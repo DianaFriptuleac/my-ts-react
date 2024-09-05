@@ -8,11 +8,17 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <BrowserRouter>
+    <main>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/articles/:id" element={<ArticleDetail />} />
       </Routes>
+      </main>
+      <footer className="mt-3">
       <Footer/>
+     
+      </footer>
+     
     </BrowserRouter>
   );
 }

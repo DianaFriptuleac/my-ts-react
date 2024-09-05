@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { Col,Card } from "react-bootstrap"
+import { Col,Card,Button } from "react-bootstrap"
+import { Link } from "react-router-dom"
 import AboutArticles from "../details/interfaces"
 
 const SingleArticle = () =>{
@@ -7,7 +8,7 @@ const URL = 'https://api.spaceflightnewsapi.net/v4/articles'
 
 
 const [singleArticle, setSingleArticle] = useState<AboutArticles[]>([])
-const myfettch = () =>{
+const myFetch = () =>{
     fetch(URL)
     .then((resp) =>{
         if (resp.ok) {
@@ -18,36 +19,33 @@ const myfettch = () =>{
     })
     .then((arrayOfArticle) => {
         console.log(arrayOfArticle)
-        setSingleArticle(arrayOfArticle)
+        setSingleArticle(arrayOfArticle.results)
     })
     .catch((err) =>{
         console.log(err)
     })
 }
 useEffect(() => {
-    myfettch()
+    myFetch()
 }, [])
 
 
 return(
-    <Col> {singleArticle.map((a) => {
+    <Col> {singleArticle.map((article) => {
         return(
-            <Card key = {a.id}>
-            <Card.Img variant="top" src={a.image_url} />
+            <Card key = {article.id} className="mb-4">
+            <Card.Img variant="top" src={article.image_url} />
             <Card.Body>
-              <Card.Title>{a.title}</Card.Title>
+              <Card.Title>{article.title}</Card.Title>
               <Card.Text>
-              {a.summary}
+              {article.summary}
               </Card.Text>
               <Card.Text>
-              {a.published_at}
-              </Card.Text>
-              <Card.Text>
-              {a.updated_at}
-              </Card.Text>
-              <Card.Text>
-              {a.url}
-              </Card.Text>
+              <small className="text-muted">Pubblicato il {new Date(article.published_at).toLocaleDateString()}</small>
+            </Card.Text>
+            <Link to={`/articles/${article.id}`}>
+              <Button variant="primary">Leggi di più</Button>
+            </Link>
             </Card.Body>
           </Card>
         )
